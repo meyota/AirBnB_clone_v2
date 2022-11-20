@@ -2,6 +2,13 @@
 """This module defines a class to manage file storage for hbnb clone"""
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+import datetime
 
 
 class FileStorage:
@@ -55,9 +62,9 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
+        """Deletes obj if it's inside the attribute __objects
+        """
         if obj:
-            name = obj.__class__.__name__
-            id = obj.id
-            key = name + '.' + id
-            if key in self.__objects:
-                del self.__objects[key]
+            key = "{}.{}".format(type(obj).__name__, obj.id)
+            if (key, obj) in self.__objects.items():
+                self.__objects.pop(key, None)
