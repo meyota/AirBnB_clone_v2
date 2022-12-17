@@ -30,14 +30,20 @@ def python_is_cool(text='is_cool'):
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def n_is_number(n):
-    """ Prints a Message when /number is called only if n is an integer"""
-    return "{:d} is a number".format(n)
+def display_number(n):
+    '''
+    - displays "<n> is a number" only if n is an integer
+    '''
+    return '{} is a number'.format(n)
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
-    """ display a HTML page only if n is an integer """
+    '''
+    - displays a HTML page only if n is an integer
+    format:
+        - "Number: n" inside body tag
+    '''
     return render_template('5-number.html', value=n)
 
 
