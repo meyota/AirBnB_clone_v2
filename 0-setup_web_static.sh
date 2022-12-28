@@ -7,7 +7,7 @@ SRC="/etc/nginx/sites-available/default"
 STATIC="\\\tlocation /hbnb_static/ {\n\t\talias /data/web_static_current/;\n\t}\n"
 sudo mkdir -p "/data/web_static/releases/test/"
 sudo mkdir "/data/web_static/shared/"
-echo "Test" | sudo tee "/data/web_static/releases/test/index.html"
+echo "Hello World" | sudo tee "/data/web_static/releases/test/index.html"
 sudo ln -sf "/data/web_static/releases/test/" "/data/web_static/current"
 sudo chown -R ubuntu:ubuntu "/data/"
 sudo sed -i "35i $STATIC" $SRC
